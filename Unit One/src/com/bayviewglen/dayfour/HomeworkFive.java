@@ -33,13 +33,13 @@ public class HomeworkFive {
 		double ninth1 = x / k;
 		double ninth2 = (int)ninth1 - ninth1;
 		
-		double tenthTest = ((double) i / j - (double) (i / j));
+		//double tenthTest = ((double) i / j - (double) (i / j));
 		double tenth1 = (double) i / j;
 		double tenth2 = (double) (i / j);
 		double tenth3 = tenth1 - tenth2;
 		
 		
-		System.out.println(tenth3);
+		//System.out.println(tenth3);
 
 	}
 

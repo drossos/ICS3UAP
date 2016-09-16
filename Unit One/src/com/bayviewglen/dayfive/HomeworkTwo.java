@@ -12,7 +12,7 @@ public class HomeworkTwo {
 		
 		double studentMark = mark.nextDouble();
 		
-		System.out.println("Total of test ");
+		System.out.print("Total of test ");
 		
 		double totalMark = mark.nextDouble();
 		

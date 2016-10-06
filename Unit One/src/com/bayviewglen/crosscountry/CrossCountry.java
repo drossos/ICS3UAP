@@ -42,6 +42,7 @@ public class CrossCountry {
 		int runnerOneMile3SecsOfMins =(runnerOneMile3Mins * SECONDS_IN_MINUTE);
 		double runnerOneTotalSecsMile3 = (runnerOneMile3SecsOfMins + runnerOneMile3Secs);
 		
+		
 		//time of first spit 
 		int runnerOneMinsFirstSpit = (int)(runnerOneTotalSecsMile1 / SECONDS_IN_MINUTE);
 		double runnerOneSecsFirstSpit = runnerOneTotalSecsMile1 % SECONDS_IN_MINUTE;
@@ -59,6 +60,10 @@ public class CrossCountry {
 		double runnerOneSecsThirdSpit = runnerOneThirdSpitSecsTotal % SECONDS_IN_MINUTE;
 		String runnerOneFinalSecsThirdSpit = formatter.format(runnerOneSecsThirdSpit);
 		
+		//time total 
+		int runnerOneMinsTotal =  (int)(runnerOneTotalSecsMile3 / SECONDS_IN_MINUTE );
+		double runnerOneSecsTotal  = runnerOneThirdSpitSecsTotal % SECONDS_IN_MINUTE;
+		String runnerOneFinalSecsTotal = formatter.format(runnerOneSecsTotal);
 		
 		
 		System.out.println("RUNNER ONE SUMMARY");
@@ -67,6 +72,7 @@ public class CrossCountry {
 		System.out.printf("\nTime of first spit %4d:" + runnerOneFinalSecsFirstSpit, runnerOneMinsFirstSpit );
 		System.out.printf("\nTime of second spit %4d:" + runnerOneFinalSecsSecondSpit, runnerOneMinsSecondSpit);
 		System.out.printf("\nTime of third spit %4d:" + runnerOneFinalSecsThirdSpit, runnerOneMinsThirdSpit );
+		System.out.printf("\nTotal Time %4d:" + runnerOneFinalSecsTotal, runnerOneMinsTotal );
 		
 		
 		

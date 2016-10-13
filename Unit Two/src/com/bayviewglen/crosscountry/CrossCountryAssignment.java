@@ -66,10 +66,10 @@ public class CrossCountryAssignment {
 		System.out.println("RUNNER ONE SUMMARY");
 		System.out.println("-------------------\n");
 		System.out.printf("Runner Name: %4s", runnerOneName);
-		System.out.printf("\nTime of first split %4s:", runnerOneFinalTimeFirstSplit);
-		System.out.printf("\nTime of second split %4s:", runnerOneFinalTimeSecondSplit);
-		System.out.printf("\nTime of third split %4s:", runnerOneFinalTimeThirdSplit);
-		System.out.printf("\nTotal Time %4s:", runnerOneFinalTimeTotal);
+		System.out.printf("\nTime of first split: %4s", runnerOneFinalTimeFirstSplit);
+		System.out.printf("\nTime of second split: %4s", runnerOneFinalTimeSecondSplit);
+		System.out.printf("\nTime of third split: %4s", runnerOneFinalTimeThirdSplit);
+		System.out.printf("\nTotal Time: %4s", runnerOneFinalTimeTotal);
 
 		// --------ALL SECOND RUNNER----
 
@@ -124,10 +124,10 @@ public class CrossCountryAssignment {
 		System.out.println("\nRUNNER TWO SUMMARY");
 		System.out.println("-------------------\n");
 		System.out.printf("Runner Name: %4s", runnerTwoName);
-		System.out.printf("\nTime of first split %4s:", runnerTwoFinalTimeFirstSplit);
-		System.out.printf("\nTime of second split %4s:", runnerTwoFinalTimeSecondSplit);
-		System.out.printf("\nTime of third split %4s:", runnerTwoFinalTimeThirdSplit);
-		System.out.printf("\nTotal Time %4s:", runnerTwoFinalTimeTotal);
+		System.out.printf("\nTime of first split: %4s", runnerTwoFinalTimeFirstSplit);
+		System.out.printf("\nTime of second split: %4s", runnerTwoFinalTimeSecondSplit);
+		System.out.printf("\nTime of third split: %4s", runnerTwoFinalTimeThirdSplit);
+		System.out.printf("\nTotal Time: %4s", runnerTwoFinalTimeTotal);
 
 		// --------ALL THIRD RUNNER----
 
@@ -182,10 +182,10 @@ public class CrossCountryAssignment {
 		System.out.println("\nRUNNER THREE SUMMARY");
 		System.out.println("-------------------\n");
 		System.out.printf("Runner Name: %4s", runnerThreeName);
-		System.out.printf("\nTime of first split %4s:", runnerThreeFinalTimeFirstSplit);
-		System.out.printf("\nTime of second split %4s:", runnerThreeFinalTimeSecondSplit);
-		System.out.printf("\nTime of third split %4s:", runnerThreeFinalTimeThirdSplit);
-		System.out.printf("\nTotal Time %4s:", runnerThreeFinalTimeTotal);
+		System.out.printf("\nTime of first split: %4s", runnerThreeFinalTimeFirstSplit);
+		System.out.printf("\nTime of second split: %4s", runnerThreeFinalTimeSecondSplit);
+		System.out.printf("\nTime of third split: %4s", runnerThreeFinalTimeThirdSplit);
+		System.out.printf("\nTotal Time: %4s", runnerThreeFinalTimeTotal);
 
 		// --------ALL FOURTH RUNNER----
 		
@@ -240,10 +240,10 @@ public class CrossCountryAssignment {
 		System.out.println("\nRUNNER FOUR SUMMARY");
 		System.out.println("-------------------\n");
 		System.out.printf("Runner Name: %4s", runnerFourName);
-		System.out.printf("\nTime of first split %4s:", runnerFourFinalTimeFirstSplit);
-		System.out.printf("\nTime of second split %4s:", runnerFourFinalTimeSecondSplit);
-		System.out.printf("\nTime of third split %4s:", runnerFourFinalTimeThirdSplit);
-		System.out.printf("\nTotal Time %4s:", runnerFourFinalTimeTotal);
+		System.out.printf("\nTime of first split: %4s", runnerFourFinalTimeFirstSplit);
+		System.out.printf("\nTime of second split: %4s", runnerFourFinalTimeSecondSplit);
+		System.out.printf("\nTime of third split: %4s", runnerFourFinalTimeThirdSplit);
+		System.out.printf("\nTotal Time: %4s", runnerFourFinalTimeTotal);
 
 		// --------ALL FIFTH RUNNER----
 
@@ -298,10 +298,10 @@ public class CrossCountryAssignment {
 		System.out.println("\nRUNNER FIVE SUMMARY");
 		System.out.println("-------------------\n");
 		System.out.printf("Runner Name: %4s", runnerFiveName);
-		System.out.printf("\nTime of first split %4s:", runnerFiveFinalTimeFirstSplit);
-		System.out.printf("\nTime of second split %4s:", runnerFiveFinalTimeSecondSplit);
-		System.out.printf("\nTime of third split %4s:", runnerFiveFinalTimeThirdSplit);
-		System.out.printf("\nTotal Time %4s:", runnerFiveFinalTimeTotal);
+		System.out.printf("\nTime of first split: %4s", runnerFiveFinalTimeFirstSplit);
+		System.out.printf("\nTime of second split: %4s", runnerFiveFinalTimeSecondSplit);
+		System.out.printf("\nTime of third split: %4s", runnerFiveFinalTimeThirdSplit);
+		System.out.printf("\nTotal Time: %4s", runnerFiveFinalTimeTotal);
 
 		// --------------------------------table of times----------------------
 		

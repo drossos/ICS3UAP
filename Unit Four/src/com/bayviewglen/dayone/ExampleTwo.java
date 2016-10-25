@@ -20,8 +20,8 @@ public class ExampleTwo {
 	}
 	
 	int sum = 0;
-	for(int i = low; i<=high; i++){
-		sum += i;
+	for(int current = low; current<=high; current++){
+		sum += current;
 	}
 	System.out.println(sum);
 	

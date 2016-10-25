@@ -3,6 +3,9 @@ package com.bayviewglen.dayseven;
 import java.util.Scanner;
 
 public class BayviewGlenPools {
+	
+	static final double LEVEL_OF_WATER = 0.9;
+	static final int CONVERSION_TO_LITRES = 1000;
 
 	public static void main(String[] args) {
 		
@@ -35,9 +38,11 @@ public class BayviewGlenPools {
 		System.out.print("Enter price of third liner ");
 		double liner3 = keyboard.nextDouble();
 		
+		keyboard.close();
+		
 		//volume of shallow end 
 		
-		double shallowVolume = 1000*(shallowDepth * width * shallowLength); //works
+		double shallowVolume = CONVERSION_TO_LITRES *(shallowDepth * width * shallowLength); 
 		
 		//length of deep end, pythagorus formula to find missing side of triangle
 		
@@ -48,17 +53,17 @@ public class BayviewGlenPools {
 		
 		//volume of deep end 
 		
-		double deepVolume = 1000 * (deepLength * width * deepDepth);//times 1 thousand to convert to liters 
+		double deepVolume = CONVERSION_TO_LITRES * (deepLength * width * deepDepth);//times 1 thousand to convert to liters 
 		
 		//volume of transition area. Gonna calculate as if it was a rectangle than subtract area of triangle outside rectangle 
 		double transitionRectangle = xLength * width * deepDepth;
 		double volumeTriangleOutside = .5 * xLength * heightIncline * width;
-		double transitionVolume = 1000 * (transitionRectangle - volumeTriangleOutside);
+		double transitionVolume = CONVERSION_TO_LITRES * (transitionRectangle - volumeTriangleOutside);
 		
 		//total volume and amount of water that needs to be filled
 		
 		double totalVolume = transitionVolume + deepVolume + shallowVolume;
-		double waterLevelUnrounded = totalVolume * 0.9;
+		double waterLevelUnrounded = totalVolume * LEVEL_OF_WATER;
 		double waterLevelMult = (int)(waterLevelUnrounded * 100);
 		double waterLevel = waterLevelMult / 100;
 		
@@ -99,9 +104,11 @@ public class BayviewGlenPools {
 		double linerCost3Mult = (int)(linerCost3Unrounded * 100);
 		double linerCost3 = linerCost3Mult / 100;
 		
+		System.out.print(deepLiner + " " + shallowLiner + " " + transitionLiner);
 		
 		
-		if (xSqrd <= 0 || heightIncline == 0) {
+		
+		if (xSqrd < 0) {
 			
 			System.out.println("Invalid dimensions for the pool");
 			
@@ -122,6 +129,8 @@ public class BayviewGlenPools {
 				System.out.println("There should be " + waterLevel + " liters of in the pool");
 				System.out.println("All three prices on liner are equal with option one being $" + linerCost1 + "option two being $" + linerCost2 + "and option three being $" + linerCost3);
 			}
+			
+			
 			
 			
 		}

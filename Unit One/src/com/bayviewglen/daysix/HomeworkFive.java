@@ -11,6 +11,8 @@ public class HomeworkFive {
 		double averageRounded = (int)(average * 100000) ;
 		double average1 = averageRounded / 1000;
 		
+		
+		
 		System.out.print(average1);
 
 	}

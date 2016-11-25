@@ -80,7 +80,7 @@ public class HangMan {
                     if (playerOnePhrase.charAt(i) == ' ')
                         PhraseHidden += '/';
                     if (playerOnePhrase.charAt(i) != ' ')
-                        PhraseHidden += '-';
+                        PhraseHidden += "_ ";
                 }
 
                 // spaces so they don't see word
@@ -95,11 +95,12 @@ public class HangMan {
 
                     // this is for the initial parts of the guess
                     System.out.println(PhraseHidden);
-                    if (PhraseHidden.indexOf('-') == -1){
+                    if (PhraseHidden.indexOf('_') == -1){
                     	playerTwoPoints += i+1;
                         System.out.println("Good job " + playerTwo + ". You have earned " + (i +1) +
                             " points. You currently have " + playerTwoPoints + " points");
                        playerOneTurn = false;
+                       break;
                     }
                     System.out.println(letterBank);
                     System.out.println("\nYou have " +(i-1)+" chances until you will be forced to guess.\n");
@@ -140,7 +141,7 @@ public class HangMan {
                     if (i != 1) {
                     	
                         System.out.println("\nIf you guess the right answer you get " + i + " points");
-                        System.out.println(playerTwo + " Are you going to guess a letter(1) or the phrase(2)");
+                        System.out.println(playerTwo + " Are you going to guess a character(1) or the phrase(2)");
                         String choice = keyboard.nextLine().toUpperCase();
 
                         // checking if it is a valid choice
@@ -149,11 +150,11 @@ public class HangMan {
                             i++;
 
                         }
-                        // if the player chooses to guess a letter 
+                        // if the player chooses to guess a character 
                         if (choice.equals("1")) {
                         	boolean invalidChar = true;
                         	while (invalidChar){
-                            System.out.println("What letter are you going to guess " + playerTwo);
+                            System.out.println("What character are you going to guess " + playerTwo);
                             String guessLong = keyboard.nextLine().toUpperCase();
                             if (guessLong.isEmpty()){
                             	System.out.println("Please actualy type something.\n");
@@ -173,7 +174,7 @@ public class HangMan {
                             }
 
                             if (letterBank.indexOf(guess) == -1 && ACCEPTED_GUESSES.indexOf(guess) != -1) {
-                                System.out.println("\nPlease pick a letter that you have not already picked");
+                                System.out.println("\nPlease pick a character that you have not already picked");
                                 
                             }
                             // this are is for if the guess is valid
@@ -187,8 +188,8 @@ public class HangMan {
                                         // making the new hidden phrase
                                         for (int k = 0; k < playerOnePhrase.length(); k++) {
                                             if (playerOnePhrase.charAt(k) == guess) {
-                                                PhraseHidden = PhraseHidden.substring(0, k) + guess +
-                                                    PhraseHidden.substring(k + 1);
+                                                PhraseHidden = PhraseHidden.substring(0, k) + guess + " " +
+                                                    PhraseHidden.substring(k + 2);
                                                
                                             }
                                         }
@@ -196,14 +197,14 @@ public class HangMan {
                                     }
                                     // this is if the letter guessed is not in
                                     // the phrase
-                                    if (PhraseHidden.indexOf(guess) == -1)
+                                    if (playerOnePhrase.indexOf(guess) == -1)
                                         correct = false;
 
                                 }
                                 if (!correct)
-                                    System.out.println("Sorry " + playerTwo + ", that letter is not in the phrase\n");
+                                    System.out.println("Sorry " + playerTwo + ", that character is not in the phrase\n");
                                 if (correct)
-                                    System.out.println("Correct " + playerTwo + ", that letter is in the phrase\n");
+                                    System.out.println("Correct " + playerTwo + ", that character is in the phrase\n");
                                 letterBank = letterBank.substring(0, letterBank.indexOf(guess)) + "- " +
                                     letterBank.substring(letterBank.indexOf(guess) + 2);
 
@@ -315,7 +316,7 @@ public class HangMan {
                     if (playerTwoPhrase.charAt(i) == ' ')
                         PhraseHidden += '/';
                     if (playerTwoPhrase.charAt(i) != ' ')
-                        PhraseHidden += '-';
+                        PhraseHidden += "_ ";
                 }
 
                 // spaces so they don't see word
@@ -330,7 +331,7 @@ public class HangMan {
 
                     // this is for the initial parts of the guess
                     System.out.println(PhraseHidden);
-                    if (PhraseHidden.indexOf('-') == -1){
+                    if (PhraseHidden.indexOf('_') == -1){
                     	playerOnePoints += i+1;
                         System.out.println("Good job " + playerOne + ". You have earned " + (i +1) +
                             " points. You currently have " + playerOnePoints + " points");
@@ -373,7 +374,7 @@ public class HangMan {
                     // for when it is not the final guess
                     if (i != 1) {
                         System.out.println("\nIf you guess the right answer you get " + i + " points");
-                        System.out.println(playerOne + " Are you going to guess a letter(1) or the phrase(2)");
+                        System.out.println(playerOne + " Are you going to guess a character(1) or the phrase(2)");
                         String choice = keyboard.nextLine().toUpperCase();
 
                         // checking if it is a valid choice
@@ -386,7 +387,7 @@ public class HangMan {
                         if (choice.equals("1")) {
                         	boolean invalidChar = true;
                         	while (invalidChar){
-                            System.out.println("What letter are you going to guess " + playerOne);
+                            System.out.println("What character are you going to guess " + playerOne);
                             String guessLong = keyboard.nextLine().toUpperCase();
                             if (guessLong.isEmpty()){
                             	System.out.println("Please actualy type something.\n");
@@ -406,7 +407,7 @@ public class HangMan {
                             }
 
                             if (letterBank.indexOf(guess) == -1 && ACCEPTED_GUESSES.indexOf(guess) != -1) {
-                                System.out.println("\nPlease pick a letter that you have not already picked");
+                                System.out.println("\nPlease pick a character that you have not already picked");
                                 
                             }
                             // this are is for if the guess is valid
@@ -420,8 +421,8 @@ public class HangMan {
                                         // making the new hidden phrase
                                         for (int k = 0; k < playerTwoPhrase.length(); k++) {
                                             if (playerTwoPhrase.charAt(k) == guess) {
-                                                PhraseHidden = PhraseHidden.substring(0, k) + guess +
-                                                    PhraseHidden.substring(k + 1);
+                                                PhraseHidden = PhraseHidden.substring(0, k) + guess + " " +
+                                                    PhraseHidden.substring(k + 2);
                                                
                                             }
                                         }
@@ -429,14 +430,14 @@ public class HangMan {
                                     }
                                     // this is if the letter guessed is not in
                                     // the phrase
-                                    if (PhraseHidden.indexOf(guess) == -1)
+                                    if (playerTwoPhrase.indexOf(guess) == -1)
                                         correct = false;
 
                                 }
                                 if (!correct)
-                                    System.out.println("Sorry " + playerOne + ", that letter is not in the phrase\n");
+                                    System.out.println("Sorry " + playerOne + ", that character is not in the phrase\n");
                                 if (correct)
-                                    System.out.println("Correct " + playerOne + ", that letter is in the phrase\n");
+                                    System.out.println("Correct " + playerOne + ", that character is in the phrase\n");
                                 letterBank = letterBank.substring(0, letterBank.indexOf(guess)) + "- " +
                                     letterBank.substring(letterBank.indexOf(guess) + 2);
 
@@ -529,3 +530,4 @@ public class HangMan {
             System.out.print("\nCongratulations " + playerTwo + ", you have won the game");
     }
 }
+

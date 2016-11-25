@@ -6,9 +6,9 @@ public class HangMan {
     //enter blank phrase, no message pops up
     static final String ACCEPTED_CHARACTERS = ("QWERTYUIOPASDFGHJKLZXCVBNM1234567890 ");
     static final String ACCEPTED_GUESSES = ("QWERTYUIOPASDFGHJKLZXCVBNM1234567890");
-    static final int TOTAL_POINTS = 2;
+    static final int TOTAL_POINTS = 8;
     static final int SPACES = 50;
-    static final int TOTAL_TURNS = 1;
+    static final int TOTAL_TURNS = 5;
     static final int EMPTY = 0;
 
     public static void main(String[] args) {

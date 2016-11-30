@@ -8,7 +8,7 @@ public class DeMorgansLaws {
 		 * !(a || b) ==  (!a&&!b)
 		  
 		 */
-		 
+		
 
 	}
 

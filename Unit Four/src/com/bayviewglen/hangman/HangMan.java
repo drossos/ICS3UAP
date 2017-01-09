@@ -77,14 +77,14 @@ public class HangMan {
                             System.out.println("\nPlease enter in a word and not just spaces.");
                             break;
                         }
-                        if (ACCEPTED_CHARACTERS.indexOf(chosenPhrase.charAt(i)) != -1 &&
-                            chosenPhrase.trim().length() != EMPTY) {
-                            invalid = false;
+                    }
+                        if (invalid == false) {
+                            
                             chosenPhrase = chosenPhrase.trim();
                         }
 
                     }
-                }
+                
                 // if the phrase is valid
                 // to make a version of the word that is hidden
                 for (int i = 0; i < chosenPhrase.length(); i++) {

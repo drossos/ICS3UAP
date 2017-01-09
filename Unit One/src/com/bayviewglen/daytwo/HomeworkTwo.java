@@ -14,7 +14,6 @@ public class HomeworkTwo {
 		System.out.println("        | | ");
 		System.out.println("      --   --");
 
-
 	}
 
 }

@@ -1,18 +1,26 @@
 package com.bayviewglen.game;
 
 import java.io.File;
-
-
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+import sun.audio.AudioData;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+import sun.audio.ContinuousAudioDataStream;
 
 
 
-//PERSONAL TOUCH IS WEATHER SYSTEM THAT AFFECTS SPEEED OF HORSES
+
+//PERSONAL TOUCH IS WEATHER SYSTEM THAT AFFECTS SPEEED OF HORSES / MUSIC
 
 public class HorseRacing {
 
@@ -27,10 +35,15 @@ public class HorseRacing {
  static int movementLow = 1;
  public static String numbers = "1234567890";
  public static int betRounds = 2;
+ public static int choicePlayer = 2 ;
+ public static int choiceHorse = 1;
 
+ static ContinuousAudioDataStream loop = null;
+ 
+ 
  public static void main(String[] args) {
 
-  introMessage();
+  
 
   String[] horses = getHorses();
   String[] playerNames = getPlayers();
@@ -39,6 +52,18 @@ public class HorseRacing {
   boolean gameOver = false;
 
   while (!gameOver) {
+	 
+			 try {
+			        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("input/music.wav").getAbsoluteFile());
+			        Clip clip = AudioSystem.getClip();
+			        clip.open(audioInputStream);
+			        clip.start();
+			    } catch(Exception ex) {
+			        System.out.println("Error with playing sound.");
+			        ex.printStackTrace();
+			    }
+		
+
    //leads to pre-race options
    menuScreen(horses, playerNames, playerWallets);
    //update this again incase changes to roster was made in the menu
@@ -54,7 +79,7 @@ public class HorseRacing {
 
   }
 
-
+  
   closingMessage();
  }
 
@@ -76,8 +101,8 @@ public class HorseRacing {
    ArrayList < String > playerList = playerArrayToList(playerNames, playerWallets);
    //makes sure that if wallet is empty removes your from the list
    playerList = checkWalletEmpty(playerList, playerWallets, playerNames);
-   checkHorsesEmpty(horseList, playerList, 1);
-   checkPlayersEmpty(horseList, playerList, 2);
+   checkHorsesEmpty(horseList, playerList, choiceHorse);
+   checkPlayersEmpty(horseList, playerList, choicePlayer);
 
    // keeps brining to menu screen until you choose to race
    boolean passed = true;
@@ -142,6 +167,7 @@ public class HorseRacing {
    System.out.println("Would you like to 1: add or 2: remove from the roster");
    String response = validateResponse(keyboard.nextLine());
    int answer = Integer.parseInt(response);
+   //1 and two correspond to emnu chocie
    if (answer == 1)
     addRoster(horseList, playerList, option);
    if (answer == 2)
@@ -412,6 +438,7 @@ public class HorseRacing {
    movementHigh = 10;
    movementLow = 2;
   }
+  
 
 
 
@@ -437,12 +464,13 @@ public class HorseRacing {
   //checks every bet they each player made and if they won on either and pays out in accordance
  private static int[] payOutBets(int[][] playerBets, int[] playerWallets, String[] playerNames, int winningHorse) {
   // adds or subtracts money based off if you guessed the winning horse
+	 //loop goes through each player and the one or two in the 2D array is for each betting round
   for (int i = 0; i < playerWallets.length; i++) {
    if (playerBets[i][0] == winningHorse) {
     playerWallets[i] += 2 * (playerBets[i][1]);
     System.out.println("Congratulations " + playerNames[i] + " you have won $" + playerBets[i][1]);
    }
-   if (playerBets[i][0] != winningHorse) {
+   if (playerBets[i][0] != winningHorse && playerBets[i][0] != -1) {
     System.out.println("Sorry " + playerNames[i] + " you have not won and lost $" + playerBets[i][1]);
    }
 
@@ -451,7 +479,7 @@ public class HorseRacing {
     System.out.println("Congratulations " + playerNames[i] + " you have won $" + playerBets[i][2]);
    }
 
-   if (playerBets[i][2] != winningHorse) {
+   if (playerBets[i][2] != winningHorse && playerBets[i][2] != -1) {
     System.out.println("Sorry " + playerNames[i] + " you have not won and lost $" + playerBets[i][3]);
    }
   }
@@ -647,7 +675,7 @@ public class HorseRacing {
    // makes a array with each person and a spot for their bet
    int[][] playerBets = new int[playerNames.length][4];
    System.out.println(
-    "We are now taking bets on the next race. Each player can bet twice on different horses or the same horse.");
+    "We are now taking bets on the next race. Each player can bet twice on different horses or the same horse. Type \"skip\" to bet nothing");
    // this outloop contains which bet they are on
    for (int j = 0; j < betRounds; j++) {
     for (int i = 0; i < playerNames.length; i++) {
@@ -655,8 +683,10 @@ public class HorseRacing {
      displayPlayerName(playerNames, i);
      // get which lane you are going to bet on
      String validBetPhrase = validateBetPhrase(horsesInRace, playerWallets, i);
+     
      int playerBetLane = getBetLane(validBetPhrase);
      int playerBetAmount = getBetAmount(validBetPhrase);
+     
      if (j == 0) {
       playerBets[i][0] = playerBetLane;
       playerBets[i][1] = playerBetAmount;
@@ -679,6 +709,8 @@ public class HorseRacing {
   String betLine = "";
   while (!numeric) {
    betLine = keyboard.nextLine().trim();
+   if (betLine.equals("skip"))
+	   return betLine;
    numeric = checkNumeric(betLine, horsesInRace, playerWallets, player);
   }
   return betLine;
@@ -725,11 +757,15 @@ public class HorseRacing {
   }
   //parses bet phrase for money bet
  private static int getBetAmount(String response) {
+	 if (response.equals("skip"))
+		 return 0;
    return Integer.parseInt((response).split(" ")[1]);
 
   }
   //parses bet phrase for which lane they are betting on
  private static int getBetLane(String response) {
+	 if (response.equals("skip"))
+		 return -1;
    return Integer.parseInt((response).split(" ")[0]);
 
   }
